@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual Environment
+venv/
+
+# Environment Variables
+.env
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Migrations (optional: keep if you want to version them)
+alembic/versions/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage / test cache
+.coverage
+htmlcov/
+.cache/
+.pytest_cache/
+
+# Logs
+*.log

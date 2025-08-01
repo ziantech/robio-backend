@@ -1,0 +1,9 @@
+[flake8]
+max-line-length = 2500  # ✅ Ignore long lines completely
+ignore = F401,E501      # ✅ Ignore unused imports & line length warnings
+exclude = 
+    alembic/,
+    venv/,
+    __pycache__/,
+    .git/,
+    .mypy_cache/
