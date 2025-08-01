@@ -8,7 +8,15 @@ load_dotenv()
 class Settings(BaseSettings):
     ENV: str
     DATABASE_URL: str
-
+    MAIL_USERNAME: str
+    MAIL_PASSWORD: str
+    MAIL_FROM: str
+    MAIL_PORT: int
+    MAIL_SERVER: str
+    MAIL_STARTTLS: bool
+    MAIL_SSL_TLS: bool
+    USE_CREDENTIALS: bool
+    MAIL_FROM_NAME: str = "RoBio"
     class Config:
         case_sensitive = True
 
