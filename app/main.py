@@ -11,6 +11,8 @@ from app.db.session import SessionLocal
 from app.core.config import settings, IS_DEV
 from app.middleware.security import BlockExploitPathsMiddleware
 
+from app.api.routes import user_routes
+
 ROMANIA_TZ = pytz.timezone("Europe/Bucharest")
 
 
@@ -68,3 +70,5 @@ def root(db: Session = Depends(get_db)):
         "romania_time_estimate": romania_time,
         "env": settings.ENV
     }
+
+app.include_router(user_routes.router, prefix="/v1/users", tags=["users"])

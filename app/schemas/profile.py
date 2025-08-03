@@ -2,27 +2,18 @@ from pydantic import BaseModel
 from typing import List, Optional
 from enum import Enum
 from datetime import datetime
-
-
-# ✅ Track changes to name fields (with sources)
-class NameChange(BaseModel):
-    field: str
-    from_: str
-    to: str
-    changed_at: datetime
-    reason: Optional[str] = None
-    sources: List[str] = [] 
+from shared import AddressObject, ChangeRecord, DateObject
 
 
 # ✅ Complete name structure
 class NameObject(BaseModel):
     title: Optional[str]
-    first: List[str]
+    first: List[str] = []
+    alternative: List[str] = []
     last: str
     maiden: Optional[str]
     suffix: Optional[str]
-    reason: Optional[str]
-    changes: List[NameChange] = []
+    changes: List[ChangeRecord] = []
     sources: List[str] = []
 
 
@@ -33,18 +24,21 @@ class SexEnum(str, Enum):
     unknown = "unknown"
 
 
-# ✅ Track changes to sex (with sources)
-class SexChange(BaseModel):
-    from_: SexEnum
-    to: SexEnum
-    changed_at: datetime
-    reason: Optional[str] = None
-    sources: List[str] = []
-
-
 # ✅ Complete sex structure with history and verification
 class SexObject(BaseModel):
     value: SexEnum
-    reason: Optional[str]
     sources: List[str] = []
-    changes: List[SexChange] = []
+    changes: List[ChangeRecord] = []
+
+
+class BirthObject(BaseModel):
+    date: Optional[DateObject] = None
+    place: Optional[AddressObject] = None
+    sources: List[str] = []  
+    changes: List[ChangeRecord] = []
+
+class DeathObject(BaseModel):
+    date: Optional[DateObject] = None
+    place: Optional[AddressObject] = None
+    sources: List[str] = []  
+    changes: List[ChangeRecord] = []

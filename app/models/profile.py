@@ -12,7 +12,10 @@ class Profile(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     tree_ref = Column(String(20), unique=True, nullable=False)
 
-    name = Column(JSON, nullable=False)  # Defined via Pydantic
-    sex = Column(JSON, nullable=False)   # Defined via Pydantic
+    name = Column(JSON, nullable=False)  
+    sex = Column(JSON, nullable=False)   
+    birth = Column(JSON, nullable=True)
+    death = Column(JSON, nullable=True)
+    picture_url = Column(String(500), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     owner = relationship("User", back_populates="profile", uselist=False)
