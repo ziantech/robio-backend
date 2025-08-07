@@ -9,6 +9,7 @@ from shared import AddressObject, ChangeRecord, DateObject
 class NameObject(BaseModel):
     title: Optional[str]
     first: List[str] = []
+ 
     alternative: List[str] = []
     last: str
     maiden: Optional[str]

@@ -47,6 +47,12 @@ class User(Base):
     profile_id = Column(UUID(as_uuid=True), ForeignKey("robio.profiles.id"))
     profile = relationship("Profile", back_populates="owner", uselist=False)
     uploaded_sources = relationship("Source", back_populates="uploaded_by")
+    created_regions = relationship("Region", back_populates="created_by")
+    created_counties = relationship("County", back_populates="created_by")
+    created_communes = relationship("Commune", back_populates="created_by")
+    created_settlements = relationship("Settlement", back_populates="created_by")
+    created_cemeteries = relationship("Cemetery", back_populates="created_by")
+
 
 from app.models.profile import Profile
 from app.models.source import Source
